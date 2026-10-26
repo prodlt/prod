@@ -105,6 +105,24 @@ footer.docfoot a:hover{color:var(--ink)}
   section,.totals{padding-left:16px;padding-right:16px}.logo,.titleblock,footer.docfoot{padding-left:16px;padding-right:16px}
   ul.variants li{grid-template-columns:30px 1fr}.vamt{grid-column:2}}
 @media (prefers-reduced-motion:reduce){.chev{transition:none!important}}
+@media(max-width:640px){
+  .tablewrap{overflow-x:visible}
+  table.est{min-width:0;display:block;width:100%}
+  table.est thead{display:none}
+  table.est tbody{display:block;width:100%}
+  tr.grp,tr.grp>td{display:block}
+  tr.grp>td{padding:10px 10px;line-height:1.35}
+  tr.grp .gsum{margin-left:10px}
+  tr.grp .scope{display:block;margin:2px 0 0 26px}
+  tr.item.sub,tr.item.sub td{display:block}
+  tr.item:not(.sub){display:grid;grid-template-columns:auto auto 1fr auto;column-gap:6px;align-items:baseline;padding:9px 2px;border-bottom:1px solid var(--hair)}
+  tr.item:not(.sub) td{display:block;border:0;padding:0}
+  tr.item:not(.sub) td:first-child{grid-column:1/-1;margin-bottom:2px}
+  tr.item:not(.sub) td:nth-child(2),tr.item:not(.sub) td:nth-child(3),tr.item:not(.sub) td:nth-child(4){text-align:left;font-size:12px;font-weight:500;color:var(--grey)}
+  tr.item:not(.sub) td:nth-child(4)::before{content:"× "}
+  tr.item:not(.sub) td:nth-child(5){text-align:right}
+  tr.hiddenrow{display:none!important}
+}
 </style>
 </head>
 <body>
