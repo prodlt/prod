@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Elmenhorster DI beauty shot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* Layout: one white paper document on a cool grey desk; black bands, steel-blue accents, brutalist 2px lines (prod.lt v7). Single light look by design. */
+:root{--ink:#0a0a0a;--paper:#fff;--steel:#82C2F6;--grey:#6b6b6b;--line:#0a0a0a;--hair:#e2e2e2;--desk:#f2f4f7;--warm:#E8A33D;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color-scheme:light}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);color:var(--ink);background:var(--desk);line-height:1.5;font-size:14px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding-block:28px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:22px}
+.toolbar .note{font-size:14px;color:var(--ink);min-width:0;flex:1 1 280px}
+.toolbar .note strong{font-weight:800}
+.btn{font-family:inherit;font-size:13px;font-weight:700;background:var(--ink);color:var(--paper);border:2px solid var(--ink);border-radius:0;padding:9px 16px;cursor:pointer;letter-spacing:.02em}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn:focus-visible,[role=button]:focus-visible{outline:3px solid var(--steel);outline-offset:2px}
+.doc{background:var(--paper);border:2px solid var(--line);box-shadow:0 10px 40px rgba(10,10,10,.10)}
+.logo{background:var(--ink);color:var(--paper);font-weight:900;font-size:30px;letter-spacing:-.02em;padding:18px 26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo .dot{color:var(--steel)}
+.badge{background:var(--warm);color:var(--ink);font-weight:700;font-size:12px;padding:8px 16px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+.titleblock{background:var(--steel);padding:22px 26px;border-top:2px solid var(--line)}
+.titleblock h1{font-size:clamp(20px,4.5vw,32px);font-weight:900;letter-spacing:-.02em;line-height:1.1;text-transform:uppercase;text-wrap:balance}
+.titleblock p{margin-top:8px;font-weight:500}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--line)}
+.meta div{padding:12px 16px;border-left:1px solid var(--hair);border-top:1px solid var(--hair);min-width:0}
+.meta div:nth-child(-n+3){border-top:none}
+.meta div:nth-child(3n+1){border-left:none}
+.meta .k{font-size:10px;text-transform:uppercase;letter-spacing:.11em;color:var(--grey);font-weight:700;display:block;margin-bottom:2px}
+.meta .v{font-weight:700;font-size:13px}
+section{padding:26px 26px 6px}
+.sechead{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:14px}
+.sechead .idx{font-size:22px;font-weight:800;color:var(--steel);line-height:1}
+.sechead h2{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.13em}
+ul.variants{list-style:none;margin-top:14px;border:2px solid var(--line)}
+ul.variants li{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:baseline;padding:11px 14px;border-bottom:1px solid var(--hair)}
+ul.variants li:last-child{border-bottom:none}
+.vno{display:inline-grid;place-items:center;width:24px;height:24px;background:var(--ink);color:var(--steel);font-weight:800;font-size:12px;font-variant-numeric:tabular-nums}
+.vtxt{min-width:0}
+.vamt{font-weight:900;font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.vamt small,.totcard .head .amt small{font-size:.62em;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-right:4px}
+.hint{font-size:8pt;font-style:italic;color:var(--grey);margin-bottom:8px}
+.tablewrap{overflow-x:auto}
+table.est{width:100%;min-width:560px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+table.est thead th{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey);text-align:left;padding:6px 10px;border-bottom:2px solid var(--line);font-weight:700}
+table.est thead th.num{text-align:right}
+tr.grp>td{background:var(--ink);color:var(--paper);cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;padding:9px 10px;user-select:none}
+tr.grp .code{color:var(--steel);margin-right:8px}
+tr.grp .scope{color:var(--steel);margin-left:8px;text-transform:none;letter-spacing:.02em;font-weight:600}
+tr.grp .gsum{float:right;color:var(--paper)}
+tr.grp .chev{display:inline-block;width:18px;font-size:15px;transition:transform .18s ease;color:var(--steel)}
+tr.grp.collapsed .chev{transform:rotate(-90deg)}
+tbody tr.item td{padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+tr.item.sub td{font-weight:700;font-size:12px;padding-top:14px}
+tr.item .num{text-align:right;white-space:nowrap;font-weight:600}
+tr.item .unit{color:var(--grey);font-size:12px}
+tr.item.opt td{color:var(--grey);font-style:italic}
+.qty{color:var(--grey);font-size:12px;margin-right:2px}
+tr.hiddenrow{display:none}
+.fineprint{font-size:12px;color:var(--grey);margin:6px 2px 0}
+.totals{padding:8px 26px 26px}
+.totcard{border:2px solid var(--line);margin-top:16px}
+.totcard .head{background:var(--steel);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 18px;cursor:pointer;user-select:none}
+.totcard .head .lbl{font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.01em;display:flex;align-items:center;gap:10px}
+.totcard .head .amt{font-weight:900;font-size:19px;font-variant-numeric:tabular-nums}
+.totcard .head .chev{color:var(--ink);font-size:18px;display:inline-block;transition:transform .18s}
+.totcard.collapsed .head .chev{transform:rotate(-90deg)}
+.totcard .body{border-top:2px solid var(--line)}
+.totcard.collapsed .body{display:none}
+.totline{display:flex;justify-content:space-between;gap:12px;padding:9px 18px;border-bottom:1px solid var(--hair);font-size:13px}
+.totline:last-child{border-bottom:none}
+.totline .amt{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.collapsible .sechead{cursor:pointer;user-select:none}
+.collapsible .sechead .chev{margin-left:auto;color:var(--steel);transition:transform .18s;font-size:22px;line-height:1}
+.collapsible.collapsed .sechead .chev{transform:rotate(-90deg)}
+.collapsible.collapsed .cbody{display:none}
+ol.notes{list-style:none;counter-reset:n}
+ol.notes li{counter-increment:n;position:relative;padding:9px 0 9px 40px;border-bottom:1px solid var(--hair);font-size:13px}
+ol.notes li:last-child{border-bottom:none}
+ol.notes li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:9px;font-weight:800;color:var(--steel);font-variant-numeric:tabular-nums}
+.sched{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sched.one{grid-template-columns:minmax(0,420px)}
+.schcol{min-width:0}
+.schcol h3{background:var(--ink);color:var(--paper);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px}
+.schcol ol{list-style:none;border:2px solid var(--line);border-top:none}
+.schcol li{display:flex;gap:10px;padding:7px 12px;border-bottom:1px solid var(--hair);font-size:12.5px;align-items:flex-start}
+.schcol li:last-child{border-bottom:none}
+.schcol .d{font-weight:800;min-width:22px;color:var(--steel);font-variant-numeric:tabular-nums}
+.sched-note{font-size:12px;color:var(--grey);margin-top:12px}
+footer.docfoot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:2px solid var(--line);padding:16px 26px;font-size:12px;margin-top:20px}
+footer.docfoot .name{font-weight:800}
+footer.docfoot .contact{color:var(--grey)}
+footer.docfoot a{color:inherit;text-decoration:underline;text-decoration-color:var(--steel);text-decoration-thickness:2px;text-underline-offset:3px}
+footer.docfoot a:hover{color:var(--ink)}
+.logo a{color:inherit;text-decoration:none}
+.pagefoot{text-align:center;color:var(--grey);font-size:11px;margin-top:22px}
+@media(max-width:820px){.sched{grid-template-columns:1fr}}
+@media(max-width:640px){.meta{grid-template-columns:1fr 1fr}.meta div{border-top:1px solid var(--hair);border-left:1px solid var(--hair)}.meta div:nth-child(-n+2){border-top:none}.meta div:nth-child(odd){border-left:none}
+  section,.totals{padding-left:16px;padding-right:16px}.logo,.titleblock,footer.docfoot{padding-left:16px;padding-right:16px}
+  ul.variants li{grid-template-columns:30px 1fr}.vamt{grid-column:2}}
+@media (prefers-reduced-motion:reduce){.chev{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="toolbar">
+    <span class="note" id="hintTop"><strong>Norėdami išskleisti tekstą, spauskite ant rodyklyčių ▸.</strong> Tekstas automatiškai išsiskleis po <strong id="cd">40</strong> s.</span>
+    <button class="btn" id="toggleAll" type="button">Išskleisti viską</button>
+  </div>
+  <div class="doc">
+    <div class="logo"><a href="https://www.prod.lt" target="_blank" rel="noopener">prod<span class="dot">.</span>lt</a><div class="badge">DI BEAUTY SHOT</div></div>
+    <div class="titleblock"><h1>Elmenhorster – sulčių beauty shot</h1><p>TV reklama · vienas 2,5–3 s DI kadras be pakuotės, naudojamas 3 klipuose · 1920×1080, 24 kadr./s, be garso · panauda: LT, LV, EE, TV + WEB, 1 metai</p></div>
+    <div class="meta">
+      <div><span class="k">Dokumentas</span><span class="v">Sąmata</span></div>
+      <div><span class="k">Data</span><span class="v">2026-10-26</span></div>
+      <div><span class="k">Versija</span><span class="v">v1</span></div>
+      <div><span class="k">Klientas</span><span class="v">Cunamis Films</span></div>
+      <div><span class="k">Projektas</span><span class="v">Elmenhorster TV reklama</span></div>
+      <div><span class="k">Galioja iki</span><span class="v">2026-11-25</span></div>
+    </div>
+    <section class="concept"><div class="sechead"><span class="idx">A</span><h2>Koncepcija ir metodas</h2></div>
+      <p>Sulčių beauty shot kadras sukuriamas su DI, be filmavimo: pagal patvirtintą treatment ir animatiką sugeneruojami 3–5 variantai be sulčių pakuotės. Tas pats kadras naudojamas ir kituose klipuose.</p>
+    </section>
+    <section>
+      <div class="sechead"><span class="idx">B</span><h2>Sąmata (EUR, be PVM)</h2></div>
+      <p class="hint">Pastaba: pozicijų grupes (B1, B2, B3) galima suskleisti / išskleisti paspaudus juodą juostą.</p>
+      <div class="tablewrap"><table class="est"><thead><tr><th>Pozicija</th><th class="num">Kiekis</th><th>Vnt.</th><th class="num">Įkainis</th><th class="num">Viso</th></tr></thead>
+      <tbody>
+<tr class="grp" data-g="0" tabindex="0" role="button" aria-expanded="true"><td colspan="5"><span class="chev">▾</span><span class="code">B1</span>Bendrieji darbai<span class="gsum">350 €</span></td></tr>
+<tr class="item child-0"><td>Administravimas</td><td class="num"><span class="qty">1</span></td><td class="unit">kompl.</td><td class="num">50</td><td class="num">50</td></tr>
+<tr class="item child-0"><td>Prodiusavimas</td><td class="num"><span class="qty">1</span></td><td class="unit">kompl.</td><td class="num">300</td><td class="num">300</td></tr>
+<tr class="grp" data-g="1" tabindex="0" role="button" aria-expanded="true"><td colspan="5"><span class="chev">▾</span><span class="code">B2</span>Kūrimas<span class="gsum">600 €</span></td></tr>
+<tr class="item child-1"><td>DI beauty shot kūrimas: 3–5 kadro variantai, generavimas, kompozicija, spalvų korekcija</td><td class="num"><span class="qty">1</span></td><td class="unit">kadras</td><td class="num">600</td><td class="num">600</td></tr>
+<tr class="item child-1"><td>2 pataisymų ratai</td><td class="num"><span class="qty">2</span></td><td class="unit">ratas</td><td class="num">0</td><td class="num">nemokamai</td></tr>
+<tr class="item child-1 opt"><td>Kiekvienas papildomas pataisymų ratas (opcija)</td><td class="num"><span class="qty">0</span></td><td class="unit">ratas</td><td class="num">300</td><td class="num">–</td></tr>
+<tr class="item sub child-1"><td colspan="5">Papildomi formatai:</td></tr>
+<tr class="item child-1 opt"><td>Formatas 9:16 (opcija)</td><td class="num"><span class="qty">0</span></td><td class="unit">formatas</td><td class="num">200</td><td class="num">–</td></tr>
+<tr class="item child-1 opt"><td>Formatas 1:1 (opcija)</td><td class="num"><span class="qty">0</span></td><td class="unit">formatas</td><td class="num">200</td><td class="num">–</td></tr>
+<tr class="item child-1 opt"><td>Formatas 4:5 (opcija)</td><td class="num"><span class="qty">0</span></td><td class="unit">formatas</td><td class="num">200</td><td class="num">–</td></tr>
+<tr class="grp" data-g="2" tabindex="0" role="button" aria-expanded="true"><td colspan="5"><span class="chev">▾</span><span class="code">B3</span>Išpirkimas (naudojimo teisės)<span class="scope">· TV + WEB + soc. tinklai, 1 metai</span><span class="gsum">300 €</span></td></tr>
+<tr class="item child-2"><td>Lietuva, 1 metai</td><td class="num"><span class="qty">1</span></td><td class="unit">šalis</td><td class="num">100</td><td class="num">100</td></tr>
+<tr class="item child-2"><td>Latvija, 1 metai</td><td class="num"><span class="qty">1</span></td><td class="unit">šalis</td><td class="num">100</td><td class="num">100</td></tr>
+<tr class="item child-2"><td>Estija, 1 metai</td><td class="num"><span class="qty">1</span></td><td class="unit">šalis</td><td class="num">100</td><td class="num">100</td></tr>
+<tr class="item child-2 opt"><td>Pratęsimas +1 metai, LT / LV / EE (300 € + 10 %) (opcija)</td><td class="num"><span class="qty">0</span></td><td class="unit">metai</td><td class="num">330</td><td class="num">–</td></tr>
+<tr class="item child-2 opt"><td>Neribotas naudojimo laikas ir teritorija, papildomai (opcija)</td><td class="num"><span class="qty">0</span></td><td class="unit">kompl.</td><td class="num">700</td><td class="num">–</td></tr>
+      </tbody></table></div>
+      <p class="fineprint">Visos sumos nurodytos eurais (EUR), be PVM. Opcijos į bendrą sumą neįskaičiuotos.</p>
+    </section>
+    <div class="totals">
+<div class="totcard" data-t="1">
+  <div class="head" tabindex="0" role="button" aria-expanded="true"><span class="lbl">Iš viso <span class="chev">▾</span></span><span class="amt">1 375 €</span></div>
+  <div class="body">
+    <div class="totline"><span>Suma (B1 + B2 + B3)</span><span class="amt">1 250 €</span></div>
+    <div class="totline"><span>Production fee (10 %)</span><span class="amt">125 €</span></div>
+  </div>
+</div>
+    </div>
+    <section class="collapsible" data-sec="C"><div class="sechead" tabindex="0" role="button" aria-expanded="true"><span class="idx">C</span><h2>Prielaidos ir pastabos</h2><span class="chev">▾</span></div>
+      <div class="cbody"><ol class="notes"><li>Projektas: vienas 2,5–3 s sulčių beauty shot kadras, sukurtas su DI pagal patvirtintą treatment ir animatiką. Tas pats kadras naudojamas visuose trijuose klipuose.</li><li>Sugeneruojami 3–5 kadro variantai be sulčių pakuotės. Jei kadre reikės pakuotės ar logotipo, kaina perskaičiuojama atskirai.</li><li>Rezultatas: 1920×1080, 24 kadr./s, be garso.</li><li>Panauda: Lietuva, Latvija, Estija, TV + WEB + soc. tinklai, 1 metai nuo pirmos transliacijos (100 € už šalį). Pratęsimas metams: 330 €. Neribotas naudojimo laikas ir teritorija: papildomai 700 €.</li><li>Į kainą įskaičiuoti 2 pataisymų ratai. Kiekvienas papildomas ratas: 300 EUR.</li><li>Papildomi formatai (9:16, 1:1, 4:5): 200 EUR už kiekvieną.</li><li>Vykdytojas turi teisę naudoti rezultatą savo portfolio nuo pirmo viešo paskelbimo dienos.</li></ol></div></section>
+    <section class="collapsible" data-sec="D"><div class="sechead" tabindex="0" role="button" aria-expanded="true"><span class="idx">D</span><h2>Apmokėjimo sąlygos</h2><span class="chev">▾</span></div>
+      <div class="cbody"><ol class="notes"><li>Avansas: 50 % nuo bendros sumos, apmokamas prieš pradedant darbus.</li><li>Likusi dalis: 50 %, apmokama per 15 dienų nuo sąskaitos faktūros išrašymo dienos.</li><li>Atšaukus projektą, kai dalis darbų jau atlikta, už atliktus darbus pateikiama atskira sąskaita pagal faktinę atliktų darbų apimtį.</li></ol></div></section>
+    <section class="collapsible" data-sec="E"><div class="sechead" tabindex="0" role="button" aria-expanded="true"><span class="idx">E</span><h2>Terminai (nuo referencijų patvirtinimo)</h2><span class="chev">▾</span></div>
+      <div class="cbody">
+        <p class="fineprint" style="margin-bottom:10px">Nurodytos tik mūsų gamybos komandos darbo dienos. Kliento komentavimo ir tvirtinimo laikas čia neįtrauktas, nes tai nuo mūsų nepriklausantis veiksnys.</p>
+        <div class="sched one">
+<div class="schcol"><h3>DI beauty shot · 7 d. d.</h3><ol><li><span class="d">01</span><span>Referencijos, kadro stilius ir nuotaika</span></li><li><span class="d">02</span><span>Pirmi DI testai ir kadro variantai</span></li><li><span class="d">03</span><span>Kadro generavimas</span></li><li><span class="d">04</span><span>Kadro generavimas</span></li><li><span class="d">05</span><span>Korekcijos po komentarų</span></li><li><span class="d">06</span><span>Korekcijos po komentarų</span></li><li><span class="d">07</span><span>Galutinio failo atidavimas</span></li></ol></div>
+        </div>
+        <p class="sched-note">Terminai preliminarūs ir priklauso nuo kliento atsakymų greičio. Papildomi formatai ar pataisymų ratai terminą pailgina.</p>
+      </div>
+    </section>
+    <footer class="docfoot"><span class="name">Vytautas Jakutis – <a href="https://www.prod.lt" target="_blank" rel="noopener">prod.lt</a></span><span class="contact"><a href="mailto:vjakutis@gmail.com">vjakutis@gmail.com</a> · +370 685 38288</span></footer>
+  </div>
+  <p class="pagefoot">Sąmata Cunamis Films · Elmenhorster DI beauty shot · v1</p>
+</div>
+<script>
+(function(){
+  var auto = null, allOpen = true;
+  var btn = document.getElementById('toggleAll');
+  function setGroup(tr, collapsed){
+    tr.classList.toggle('collapsed', collapsed);
+    tr.setAttribute('aria-expanded', String(!collapsed));
+    document.querySelectorAll('.child-' + tr.dataset.g).forEach(function(c){ c.classList.toggle('hiddenrow', collapsed); });
+  }
+  function setCard(card, collapsed){
+    card.classList.toggle('collapsed', collapsed);
+    card.querySelector('.head').setAttribute('aria-expanded', String(!collapsed));
+  }
+  function setSec(sec, collapsed){
+    sec.classList.toggle('collapsed', collapsed);
+    sec.querySelector('.sechead').setAttribute('aria-expanded', String(!collapsed));
+  }
+  function setAll(collapsed){
+    document.querySelectorAll('tr.grp').forEach(function(tr){ setGroup(tr, collapsed); });
+    document.querySelectorAll('.totcard').forEach(function(c){ setCard(c, collapsed); });
+    document.querySelectorAll('.collapsible').forEach(function(s){ setSec(s, collapsed); });
+    allOpen = !collapsed;
+    btn.textContent = collapsed ? 'Išskleisti viską' : 'Suskleisti viską';
+  }
+  var hint = document.getElementById('hintTop'), left = 40, tick = null;
+  var doneHint = '<strong>Spauskite ant rodyklyčių, kad išskleistumėte ar suskleistumėte tekstą.</strong>';
+  function stopTick(){ if(tick){ clearInterval(tick); tick = null; } }
+  tick = setInterval(function(){ left -= 1; var cd = document.getElementById('cd'); if(cd && left >= 0) cd.textContent = left; }, 1000);
+  function cancelAuto(){ if(auto){ clearTimeout(auto); auto = null; stopTick(); hint.innerHTML = doneHint; } }
+  function bind(el, fn){
+    el.addEventListener('click', function(){ cancelAuto(); fn(); });
+    el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); cancelAuto(); fn(); } });
+  }
+  document.querySelectorAll('tr.grp').forEach(function(tr){ bind(tr, function(){ setGroup(tr, !tr.classList.contains('collapsed')); }); });
+  document.querySelectorAll('.totcard').forEach(function(c){ bind(c.querySelector('.head'), function(){ setCard(c, !c.classList.contains('collapsed')); }); });
+  document.querySelectorAll('.collapsible').forEach(function(s){ bind(s.querySelector('.sechead'), function(){ setSec(s, !s.classList.contains('collapsed')); }); });
+  btn.addEventListener('click', function(){ cancelAuto(); setAll(allOpen); });
+  function openMain(){
+    document.querySelectorAll('tr.grp').forEach(function(tr){ setGroup(tr, false); });
+    document.querySelectorAll('.collapsible').forEach(function(s){ if(s.dataset.sec === 'C') setSec(s, false); });
+  }
+  setAll(true);
+  auto = setTimeout(function(){ auto = null; openMain(); stopTick(); hint.innerHTML = doneHint; }, 40000);
+})();
+</script>
+
+</body>
+</html>
